@@ -1,0 +1,25 @@
+name: native_draggable
+description: A new flutter plugin project.
+version: 0.0.1
+author: Rody Davis <rody.davis.jr@gmail.com>
+homepage: https://github.com/rodydavis/native_draggable
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        pluginClass: NativeDraggablePlugin
+      macos:
+        pluginClass: NativeDraggablePlugin
