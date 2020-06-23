@@ -1,6 +1,8 @@
 import 'src/platform_interface.dart';
 
-class NativeDraggable extends NativeDraggablePlatformInterface {
-  NativeDraggable._();
-  static NativeDraggable instance = NativeDraggable._();
+export 'src/custom_draggable.dart';
+
+class NativeDraggablePlugin extends NativeDraggablePlatformInterface {
+  NativeDraggablePlugin._();
+  static NativeDraggablePlugin instance = NativeDraggablePlugin._();
 }
