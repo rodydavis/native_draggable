@@ -2,29 +2,23 @@ import Flutter
 import UIKit
 
 @available(iOS 11.0, *)
-public class SwiftNativeDraggablePlugin: NSObject, FlutterPlugin, UIDragInteractionDelegate, UIDropInteractionDelegate {
-    var image: UIImage?
-    var previews: [String: UIView] = [:]
-    public func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        if (image == nil){
-            return []
-        }
-        let provider = NSItemProvider(object: image!)
-        let item = UIDragItem(itemProvider: provider)
-//        item.previewProvider = {
-//            print("Custom Preview method called!")
-//            let test = UITextView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 200))
-//            test.text = "sfgshshsfhshshfshsfh"
-//            return UIDragPreview(view: test)
-//        }
-        item.localObject = image
-        return [item]
-    }
-    
+public class SwiftNativeDraggablePlugin: NSObject, FlutterPlugin, UIDragInteractionDelegate, UIDropInteractionDelegate {    
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "native_draggable", binaryMessenger: registrar.messenger())
     let instance = SwiftNativeDraggablePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
+  }
+
+  var image: UIImage?
+  var previews: [String: UIView] = [:]
+  public func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+      if (image == nil){
+          return []
+      }
+      let provider = NSItemProvider(object: image!)
+      let item = UIDragItem(itemProvider: provider)
+      item.localObject = image
+      return [item]
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -81,16 +75,4 @@ public class SwiftNativeDraggablePlugin: NSObject, FlutterPlugin, UIDragInteract
       result(FlutterMethodNotImplemented)
     }
   }
-}
-
-extension UIView {
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
 }
