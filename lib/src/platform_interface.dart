@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 abstract class NativeDraggablePlatformInterface {
   MethodChannel _channel = MethodChannel('native_draggable');
 
-  Future<bool> setDraggableFeedback(
+  Future<bool?> setDraggableFeedback(
     String key, {
-    Offset offset = Offset.zero,
-    Size size = Size.zero,
-    List<int> image,
+    Offset? offset = Offset.zero,
+    Size? size = Size.zero,
+    List<int>? image,
   }) =>
       _channel.invokeMethod<bool>('setDraggableFeedback', {
         'key': key,
@@ -20,11 +20,11 @@ abstract class NativeDraggablePlatformInterface {
         'bytes': image,
       });
 
-  Future<bool> updateDraggableFeedback(
+  Future<bool?> updateDraggableFeedback(
     String key, {
-    Offset offset = Offset.zero,
-    Size size = Size.zero,
-    List<int> image,
+    Offset? offset = Offset.zero,
+    Size? size = Size.zero,
+    List<int>? image,
   }) =>
       _channel.invokeMethod<bool>('updateDraggableFeedback', {
         'key': key,
