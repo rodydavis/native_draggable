@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, dimens) {
-        _controller?.currentState?.updateImage();
+        _controller.currentState?.updateImage();
         print('dimens: $dimens');
         return Scaffold(
           appBar: AppBar(title: Text('Draggable Example')),
